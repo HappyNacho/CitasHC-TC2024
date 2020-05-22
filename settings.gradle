@@ -1,0 +1,2 @@
+rootProject.name='Citas HC'
+include ':app'
