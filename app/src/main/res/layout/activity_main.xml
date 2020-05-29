@@ -61,7 +61,7 @@
 
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="161dp"
+        android:layout_width="wrap_content"
         android:layout_height="44dp"
         android:layout_marginTop="28dp"
 
@@ -76,7 +76,7 @@
 
     <Button
         android:id="@+id/buttonSOS"
-        android:layout_width="161dp"
+        android:layout_width="wrap_content"
         android:layout_height="44dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/rounded_button_red"
@@ -95,7 +95,7 @@
         android:layout_marginTop="56dp"
         android:fontFamily="@font/alegreya_sc"
         android:text="@string/HCG"
-        android:textSize="28sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.232"
         app:layout_constraintStart_toEndOf="@+id/imageViewLogo"
