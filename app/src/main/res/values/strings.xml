@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Citas HC</string>
     <string name="logohcg">logohcg</string>
+    <string name="Resultado">TextView</string>
 </resources>
