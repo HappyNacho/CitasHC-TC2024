@@ -11,6 +11,7 @@
         android:layout_width="88dp"
         android:layout_height="93dp"
         android:layout_marginTop="40dp"
+        android:contentDescription="@string/HCG_Description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,6 +23,7 @@
         android:layout_width="293dp"
         android:layout_height="197dp"
         android:layout_marginTop="80dp"
+        android:contentDescription="@string/Maps_Description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/buttonLogin"
@@ -34,12 +36,13 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/rounded_edittext"
         android:ems="10"
+        android:hint="@string/Usuario"
         android:inputType="textPersonName"
-        android:hint="  Usuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -48,12 +51,13 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/rounded_edittext"
         android:ems="10"
+        android:hint="@string/Password"
         android:inputType="textPassword"
-        android:hint="  Password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUser" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextUser"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/buttonLogin"
@@ -63,7 +67,7 @@
 
         android:background="@drawable/rounded_button"
         android:fontFamily="sans-serif-medium"
-        android:text="Ingresar"
+        android:text="@string/Ingresar"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,7 +81,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/rounded_button_red"
         android:fontFamily="sans-serif-medium"
-        android:text="SOS"
+        android:text="@string/EMERGENCIA"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,8 +94,8 @@
         android:layout_height="77dp"
         android:layout_marginTop="56dp"
         android:fontFamily="@font/alegreya_sc"
-        android:text="HOSPITAL CIVIL DE GUADALAJARA"
-        android:textSize="28dp"
+        android:text="@string/HCG"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.232"
         app:layout_constraintStart_toEndOf="@+id/imageViewLogo"
