@@ -1,22 +1,72 @@
 package com.happynacho.citashc;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+
+    Button buttonSOS;
+    Button buttonLogin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        try
-        {
+        try {
             this.getSupportActionBar().hide();
+        } catch (NullPointerException e) {
         }
-        catch (NullPointerException e){}
 
+
+
+        buttonSOS = findViewById(R.id.buttonSOS);
+        buttonSOS.setOnClickListener( this);
+
+        buttonLogin=findViewById(R.id.buttonLogin);
+        buttonLogin.setOnClickListener(this);
+
+    }
+
+    /**
+     * Called when a view has been clicked.
+     *
+     * @param v The view that was clicked.
+     */
+    @Override
+    public void onClick(View v) {
+
+
+        if( v.getId() == R.id.buttonSOS){
+
+            Intent intent = new Intent(Intent.ACTION_CALL);
+
+            int permissionCheck = ContextCompat.checkSelfPermission(
+                    this, Manifest.permission.CALL_PHONE);
+            if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 225);
+            } else {
+
+                intent.setData(Uri.parse("tel:911"));
+                startActivity(intent);
+
+            }
+        }
+
+        if( v.getId() == R.id.buttonLogin){
+
+        }
 
     }
 }
