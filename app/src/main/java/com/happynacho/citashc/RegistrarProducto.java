@@ -13,8 +13,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +27,8 @@ import java.util.Map;
 public class RegistrarProducto extends AppCompatActivity {
 
     EditText edtCodigo,edtProducto,edtPrecio,edtFabricante;
-    Button btnAgregar;
+    Button btnAgregar,btnBuscar;
+    RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +40,18 @@ public class RegistrarProducto extends AppCompatActivity {
         edtPrecio = (EditText) findViewById(R.id.edtPrecio);
         edtFabricante = (EditText) findViewById(R.id.edtFabricante);
         btnAgregar = (Button) findViewById(R.id.btnAgregar);
+        btnBuscar = (Button) findViewById(R.id.btnBuscar);
 
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ejecutarServicio("http://192.168.100.6:8080/developeru/insertar_producto.php");
+            }
+        });
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buscarProducto("http://192.168.100.6:8080/developeru/buscar_producto.php?coding="+edtCodigo.getText().toString()+"");
             }
         });
     }
@@ -65,11 +78,34 @@ public class RegistrarProducto extends AppCompatActivity {
                 return parametros;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-
-
-
+    }
+    private void buscarProducto(String URL){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject = null;
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        edtProducto.setText(jsonObject.getString("producto"));
+                        edtPrecio.setText(jsonObject.getString("precio"));
+                        edtFabricante.setText(jsonObject.getString("fabricante"));
+                    } catch (JSONException e) {
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT);
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),"ERROR DE CONEXION",Toast.LENGTH_SHORT);
+            }
+        }
+        );
+        requestQueue=Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
     }
 }
 

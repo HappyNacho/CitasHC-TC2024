@@ -3,4 +3,11 @@
     <string name="logohcg">logohcg</string>
     <string name="Resultado">TextView</string>
     <string name="title_activity_nearest_hostpital">Map</string>
+    <string name="usuario">Usuario</string>
+    <string name="password">Password</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="emergencia">EMERGENCIA</string>
+    <string name="mapa">Mapa</string>
+    <string name="hospital_civil_de_guadalajara">HOSPITAL CIVIL DE GUADALAJARA</string>
+    <string name="coollogo">coollogo</string>
 </resources>
