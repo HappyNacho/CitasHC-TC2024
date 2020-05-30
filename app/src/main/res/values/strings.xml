@@ -1,13 +1,6 @@
 <resources>
     <string name="app_name">Citas HC</string>
     <string name="logohcg">logohcg</string>
-    <string name="HCG">"HOSPITAL CIVIL DE GUADALAJARA "</string>
-    <string name="HCG_Description">"HOSPITAL CIVIL DE GUADALAJARA LOGO"</string>
-    <string name="Password">"  Password"</string>
-    <string name="Maps_Description">"Direcciones a el hospital"</string>
-    <string name="Usuario">"  Usuario"</string>
-    <string name="Ingresar">"Ingresar"</string>
-    <string name="EMERGENCIA">"EMERGENCIA"</string>
-
-
+    <string name="Resultado">TextView</string>
+    <string name="title_activity_nearest_hostpital">Map</string>
 </resources>

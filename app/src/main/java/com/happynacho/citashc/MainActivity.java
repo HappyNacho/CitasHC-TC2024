@@ -11,13 +11,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+
+import com.happynacho.citashc.Map.NearestHostpital;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
 
     Button buttonSOS;
     Button buttonLogin;
-
+    ImageView imageViewMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonLogin=findViewById(R.id.buttonLogin);
         buttonLogin.setOnClickListener(this);
 
+        imageViewMap= findViewById(R.id.imageViewMap);
+        imageViewMap.setOnClickListener(this);
     }
 
     /**
@@ -65,6 +70,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if( v.getId() == R.id.buttonLogin){
+
+        }
+
+        if( v.getId() == R.id.imageViewMap){
+
+            setContentView(R.layout.activity_nearest_hostpital);
 
         }
 
