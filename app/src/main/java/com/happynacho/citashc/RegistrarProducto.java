@@ -27,7 +27,7 @@ import java.util.Map;
 public class RegistrarProducto extends AppCompatActivity {
 
     EditText edtCodigo,edtProducto,edtPrecio,edtFabricante;
-    Button btnAgregar,btnBuscar;
+    Button btnAgregar,btnBuscar,btnEditar,btnEliminar;
     RequestQueue requestQueue;
 
     @Override
@@ -41,6 +41,8 @@ public class RegistrarProducto extends AppCompatActivity {
         edtFabricante = (EditText) findViewById(R.id.edtFabricante);
         btnAgregar = (Button) findViewById(R.id.btnAgregar);
         btnBuscar = (Button) findViewById(R.id.btnBuscar);
+        btnEditar = (Button) findViewById(R.id.btnEditar);
+        btnEliminar = (Button) findViewById(R.id.btnEliminar);
 
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +54,18 @@ public class RegistrarProducto extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 buscarProducto("http://192.168.100.6:8080/developeru/buscar_producto.php?coding="+edtCodigo.getText().toString()+"");
+            }
+        });
+        btnEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ejecutarServicio("http://192.168.100.6:8080/developeru/editar_producto.php");
+            }
+        });
+        btnEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eliminarProducto("http://192.168.100.6:8080/developeru/eliminar_producto.php");
             }
         });
     }
@@ -106,6 +120,35 @@ public class RegistrarProducto extends AppCompatActivity {
         );
         requestQueue=Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
+    }
+    private void eliminarProducto(String URL){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(),"El producto fue eliminado",Toast.LENGTH_SHORT).show();
+                limpiarFormulario();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros=new HashMap<String,String>();
+                parametros.put("codigo",edtCodigo.getText().toString());
+                return parametros;
+            }
+        };
+        requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+    private void limpiarFormulario(){
+        edtCodigo.setText("");
+        edtProducto.setText("");
+        edtPrecio.setText("");
+        edtFabricante.setText("");
     }
 }
 
