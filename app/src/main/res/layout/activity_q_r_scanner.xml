@@ -33,6 +33,8 @@
         android:layout_height="43dp"
         android:layout_marginTop="450dp"
         android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/scannerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
