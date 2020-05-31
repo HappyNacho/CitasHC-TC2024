@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         String id = jsonObject.getString("patient_id");
                         String password = jsonObject.getString("password");
                         if(edtUser.getText().toString().equals(id)&&MD5.getMd5(edtPassword.getText().toString()).equals(password)){
-                            startActivity(new Intent(getApplicationContext(),QRGenerator.class));
+                            startActivity(new Intent(getApplicationContext(),AgendarCita.class));
 
                         }
                     } catch (JSONException e) {

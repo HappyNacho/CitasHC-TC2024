@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ public class QRScanner extends AppCompatActivity {
     private CodeScanner codeScanner;
     private CodeScannerView scannerView;
     private TextView resultData;
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,13 +41,17 @@ public class QRScanner extends AppCompatActivity {
         resultData = findViewById(R.id.resultOfQR);
         codeScanner = new CodeScanner(this,scannerView);
 
+        intent = new Intent(this,AgendarCita.class);
+
         codeScanner.setDecodeCallback(new DecodeCallback() {
             @Override
             public void onDecoded(@NonNull final Result result) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        resultData.setText(result.getText());
+                        //resultData.setText(result.getText());
+                        intent.putExtra("QR",result.getText());
+                        startActivity(intent);
                     }
                 });
             }
