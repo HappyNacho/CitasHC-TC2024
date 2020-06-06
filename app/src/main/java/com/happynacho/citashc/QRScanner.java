@@ -41,7 +41,7 @@ public class QRScanner extends AppCompatActivity {
         resultData = findViewById(R.id.resultOfQR);
         codeScanner = new CodeScanner(this,scannerView);
 
-        intent = new Intent(this,AgendarCita.class);
+        intent = new Intent(this,MenuSelection.class);
 
         codeScanner.setDecodeCallback(new DecodeCallback() {
             @Override

@@ -15,6 +15,16 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        start();
+        }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        start();
+
+    }
+    private void start(){
         try
         {
             this.getSupportActionBar().hide();
@@ -38,5 +48,6 @@ public class SplashScreen extends AppCompatActivity {
                 startActivity(intent);
             }
             } };
-        mythread.start(); }
+        mythread.start();
+    }
 }

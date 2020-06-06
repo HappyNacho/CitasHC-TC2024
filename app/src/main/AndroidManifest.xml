@@ -22,7 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AgendarCita"></activity>
+        <activity android:name=".MenuSelection"></activity>
+        <activity android:name=".ShowCitas" />
+        <activity android:name=".AgendarCita" />
         <activity android:name=".RegistrarProducto" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

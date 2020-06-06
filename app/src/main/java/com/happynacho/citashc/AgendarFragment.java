@@ -1,13 +1,17 @@
 package com.happynacho.citashc;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -19,45 +23,39 @@ import com.android.volley.toolbox.Volley;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class AgendarCita extends AppCompatActivity {
+
+public class AgendarFragment extends Fragment {
     Button btnScan,btnAgendar;
     EditText edtPatient,edtName,edtAge,edtGender,edtAllergic,edtDescription;
     RequestQueue requestQueue;
-
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agendar_cita);
-        try {
-            this.getSupportActionBar().hide();
-        } catch (NullPointerException e) {
-        }
-
-        edtPatient = findViewById(R.id.edtPatientID);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View vista = inflater.inflate(R.layout.fragment_agendar, container, false);
+        edtPatient = vista.findViewById(R.id.edtPatientID);
         edtPatient.setEnabled(false);
-        edtName = findViewById(R.id.edtName);
+        edtName = vista.findViewById(R.id.edtName);
         edtName.setEnabled(false);
-        edtAge = findViewById(R.id.edtAge);
+        edtAge = vista.findViewById(R.id.edtAge);
         edtAge.setEnabled(false);
-        edtGender = findViewById(R.id.edtGender);
+        edtGender = vista.findViewById(R.id.edtGender);
         edtGender.setEnabled(false);
-        edtAllergic = findViewById(R.id.edtAllergic);
+        edtAllergic = vista.findViewById(R.id.edtAllergic);
         edtAllergic.setEnabled(false);
 
-        edtDescription = findViewById(R.id.edtDescription);
+        edtDescription = vista.findViewById(R.id.edtDescription);
 
-        btnScan = findViewById(R.id.btnScan);
-        btnAgendar = findViewById(R.id.btnAgendar);
+        btnScan = vista.findViewById(R.id.btnScan);
+        btnAgendar = vista.findViewById(R.id.btnAgendar);
 
         btnScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),QRScanner.class));
+                startActivity(new Intent(getContext(),QRScanner.class));
             }
         });
         btnAgendar.setOnClickListener(new View.OnClickListener() {
@@ -66,41 +64,30 @@ public class AgendarCita extends AppCompatActivity {
                 ejecutarServicio("http://192.168.100.6:8080/hcg/insertar_cita.php");
             }
         });
-        String qr = getIntent().getStringExtra("QR");
-        if(qr==null){
 
-        }
-        else if(qr.length()>2 && qr.substring(0,2).equals("QR")){
+        if(((MenuSelection)getActivity()).hasQR()) {
+            String qr = ((MenuSelection) getActivity()).getQRString();
             String[] patientQR = qr.split("/");
-            if(patientQR.length==6) {
+            if (patientQR.length == 6) {
                 edtPatient.setText(patientQR[1]);
                 edtName.setText(patientQR[2]);
                 edtAge.setText(patientQR[3]);
                 edtGender.setText(patientQR[4]);
                 edtAllergic.setText(patientQR[5]);
-
-
-            }
-            else {
-                Toast.makeText(this,"QR Invalido",Toast.LENGTH_SHORT).show();
             }
         }
-        else {
-            Toast.makeText(this,"QR Invalido",Toast.LENGTH_SHORT).show();
-        }
-
-
+        return vista;
     }
     private void ejecutarServicio(String URL){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(),"OPERACION EXITOSA",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"OPERACION EXITOSA",Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),error.toString(),Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
@@ -123,7 +110,7 @@ public class AgendarCita extends AppCompatActivity {
                 return parametros;
             }
         };
-        requestQueue = Volley.newRequestQueue(this);
+        requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
     }
 }

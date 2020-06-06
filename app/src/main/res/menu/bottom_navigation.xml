@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_agendar"
+        android:icon="@drawable/ic_agendar_24dp"
+        android:title="Agendar"/>
+    <item
+        android:id="@+id/nav_ver_citas"
+        android:icon="@drawable/ic_ver_citas_24dp"
+        android:title="Ver Citas"/>
+    <item
+        android:id="@+id/nav_modificar"
+        android:icon="@drawable/ic_border_color_black_24dp"
+        android:title="Modificar"/>
+
+
+</menu>
