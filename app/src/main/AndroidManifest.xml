@@ -25,6 +25,7 @@
         <activity android:name=".MenuSelection"></activity>
         <activity android:name=".ShowCitas" />
         <activity android:name=".AgendarCita" />
+        <activity android:name=".MapsActivity" />
         <activity android:name=".RegistrarProducto" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -38,9 +39,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".Map.NearestHostpital"
-            android:label="@string/title_activity_nearest_hostpital" />
+
         <activity android:name=".QRScanner" />
         <activity android:name=".QRGenerator" />
         <activity android:name=".MainActivity" />

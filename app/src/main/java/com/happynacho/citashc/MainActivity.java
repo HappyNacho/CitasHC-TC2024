@@ -20,7 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.happynacho.citashc.Map.NearestHostpital;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -122,13 +122,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-        if( v.getId() == R.id.buttonLogin){
 
-        }
 
         if( v.getId() == R.id.imageViewMap){
 
-            setContentView(R.layout.activity_nearest_hostpital);
+            startActivity(new Intent(this,MapsActivity.class));
 
         }
 

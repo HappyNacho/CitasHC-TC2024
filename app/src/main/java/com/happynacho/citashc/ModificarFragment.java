@@ -27,8 +27,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
@@ -93,16 +95,25 @@ public class ModificarFragment extends Fragment {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         jsonObject = response.getJSONObject(i);
-                        edtPatient.setText(jsonObject.getString("patient_id"));
-                        edtName.setText(jsonObject.getString("patient_name"));
-                        edtAge.setText(jsonObject.getString("age"));
-                        edtGender.setText(jsonObject.getString("gender"));
-                        edtAllergic.setText(jsonObject.getString("allergic_medication"));
-                        edtDescription.setText(jsonObject.getString("description"));
-                        edtDate.setText(jsonObject.getString("date"));
+                        Calendar calendar = Calendar.getInstance();
+                        SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+                        String currentTime = sdf.format(calendar.getTime());
+                        if(fechaFutura(jsonObject.getString("date").substring(0,10),currentTime)) {
+                            edtPatient.setText(jsonObject.getString("patient_id"));
+                            edtName.setText(jsonObject.getString("patient_name"));
+                            edtAge.setText(jsonObject.getString("age"));
+                            edtGender.setText(jsonObject.getString("gender"));
+                            edtAllergic.setText(jsonObject.getString("allergic_medication"));
+                            edtDescription.setText(jsonObject.getString("description"));
+                            edtDate.setText(jsonObject.getString("date"));
+                        }
+                        else{
+                            btnEliminar.setEnabled(false);
+                            btnPosponer.setEnabled(false);
+                        }
 
 
-                    } catch (JSONException e) {
+                    } catch (JSONException | ParseException e) {
                         Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT);
                     }
                 }
@@ -174,5 +185,12 @@ public class ModificarFragment extends Fragment {
         };
         requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
+    }
+    public boolean fechaFutura(String fechaCita,String fechaActual) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1 = sdf.parse(fechaCita);
+        Date date2 = sdf.parse(fechaActual);
+        if(date1.before(date2)) return false;
+        return true;
     }
 }

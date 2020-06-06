@@ -61,6 +61,7 @@ public class AgendarFragment extends Fragment {
         btnAgendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(edtPatient.getText().toString().length()==13)
                 ejecutarServicio("http://192.168.100.6:8080/hcg/insertar_cita.php");
 
             }
