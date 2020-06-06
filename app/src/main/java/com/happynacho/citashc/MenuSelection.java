@@ -105,7 +105,7 @@ public class MenuSelection extends AppCompatActivity {
     private void fillDB(){
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        final String url ="http://192.168.100.6:8080/hcg/buscar_citas.php?patient_id="+this.patient_id;
+        final String url ="https://happynacho.com/buscar_citas.php?patient_id="+this.patient_id;
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {

@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login("http://192.168.100.6:8080/hcg/login.php?patient_id="+edtUser.getText().toString());
+                login("https://happynacho.com/login.php?patient_id="+edtUser.getText().toString());
             }
         });
 

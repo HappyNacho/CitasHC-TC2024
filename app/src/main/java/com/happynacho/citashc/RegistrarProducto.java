@@ -47,25 +47,25 @@ public class RegistrarProducto extends AppCompatActivity {
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ejecutarServicio("http://192.168.100.6:8080/developeru/insertar_producto.php");
+                ejecutarServicio("https://happynacho.com/insertar_producto.php");
             }
         });
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buscarProducto("http://192.168.100.6:8080/developeru/buscar_producto.php?coding="+edtCodigo.getText().toString()+"");
+                buscarProducto("https://happynacho.com/buscar_producto.php?coding="+edtCodigo.getText().toString()+"");
             }
         });
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ejecutarServicio("http://192.168.100.6:8080/developeru/editar_producto.php");
+                ejecutarServicio("https://happynacho.com/editar_producto.php");
             }
         });
         btnEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                eliminarProducto("http://192.168.100.6:8080/developeru/eliminar_producto.php");
+                eliminarProducto("https://happynacho.com/eliminar_producto.php");
             }
         });
     }
