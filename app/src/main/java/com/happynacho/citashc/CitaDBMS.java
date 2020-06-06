@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class CitaDBMS extends SQLiteOpenHelper {
 
-    private static final String DB_FILE = "id13441212_dbbbDgf";
+    private static final String DB_FILE = "id13441212_dbbbDhgf";
     private static final String TABLE = "Citas";
     private static final String FIELD_PATIENT_ID = "patient_id";
     private static final String FIELD_DATE = "date";

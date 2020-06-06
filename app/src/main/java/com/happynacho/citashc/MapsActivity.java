@@ -136,8 +136,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }catch(NullPointerException ex){ex.printStackTrace();}
 
 
-        this.origen = new MarkerOptions().position(new LatLng(20.687491, -103.343023)).title("Location 1");
-        this.destino = new MarkerOptions().position(new LatLng(20.686201, -103.333735)).title("Location 2");
+        this.origen = new MarkerOptions().position(new LatLng(20.687491, -103.343023)).title("Hospital Civil Viejo");
+        this.destino = new MarkerOptions().position(new LatLng(20.686201, -103.333735)).title("Hospital Civil Nuevo");
 
         RequestQueue queue = Volley.newRequestQueue(this);
 

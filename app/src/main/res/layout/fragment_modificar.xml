@@ -82,7 +82,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/rounded_edittext"
         android:ems="10"
-        android:hint="Fehca"
+        android:hint="Fecha"
         android:inputType="none"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
