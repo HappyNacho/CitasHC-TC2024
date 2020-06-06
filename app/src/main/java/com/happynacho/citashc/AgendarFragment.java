@@ -61,7 +61,8 @@ public class AgendarFragment extends Fragment {
         btnAgendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ejecutarServicio("https://happynacho.com/insertar_cita.php");
+                ejecutarServicio("http://192.168.100.6:8080/hcg/insertar_cita.php");
+
             }
         });
 
