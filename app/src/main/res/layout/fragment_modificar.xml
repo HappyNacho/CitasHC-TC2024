@@ -1,6 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
 
-</RelativeLayout>
+    <EditText
+        android:id="@+id/edtPatientIDM"
+        android:layout_width="wrap_content"
+        android:layout_height="30sp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:hint="Paciente ID"
+        android:inputType="none"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtNameM"
+        android:layout_width="wrap_content"
+        android:layout_height="30sp"
+        android:layout_marginTop="8sp"
+        android:ems="10"
+        android:hint="Nombre del Paciente"
+        android:textAlignment="center"
+        android:inputType="none"
+        android:background="@drawable/rounded_edittext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtPatientIDM" />
+
+    <EditText
+        android:id="@+id/edtAgeM"
+        android:layout_width="wrap_content"
+        android:layout_height="30sp"
+        android:layout_marginTop="8sp"
+        android:ems="10"
+        android:hint="Edad"
+        android:textAlignment="center"
+        android:inputType="none"
+        android:background="@drawable/rounded_edittext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNameM" />
+
+    <EditText
+        android:id="@+id/edtGenderM"
+        android:layout_width="wrap_content"
+        android:layout_height="30sp"
+        android:layout_marginTop="8sp"
+        android:ems="10"
+        android:hint="Genero"
+        android:textAlignment="center"
+        android:inputType="none"
+        android:background="@drawable/rounded_edittext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtAgeM" />
+
+    <EditText
+        android:id="@+id/edtAllergicM"
+        android:layout_width="wrap_content"
+        android:layout_height="30sp"
+        android:layout_marginTop="8sp"
+        android:ems="10"
+        android:hint="Alergias"
+        android:textAlignment="center"
+        android:inputType="none"
+        android:background="@drawable/rounded_edittext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtGenderM" />
+
+    <EditText
+        android:id="@+id/edtDateM"
+        android:layout_width="wrap_content"
+        android:layout_height="30sp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:hint="Fehca"
+        android:inputType="none"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtDescriptionM" />
+
+    <EditText
+        android:id="@+id/edtDescriptionM"
+        android:layout_width="334dp"
+        android:layout_height="169dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtAllergicM" />
+
+    <Button
+        android:id="@+id/btnPosponer"
+        android:layout_width="207dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
+        android:text="Posponer Cita"
+        android:textColor="@color/quantum_white_100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtDateM" />
+
+    <Button
+        android:id="@+id/btnEliminar"
+        android:layout_width="223dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
+        android:text="Eliminar Cita"
+        android:textColor="@color/quantum_white_100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPosponer" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

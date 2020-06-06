@@ -96,6 +96,9 @@ public class MenuSelection extends AppCompatActivity {
     public CitaDBMS getDB(){
         return this.citasDB;
     }
+    public String getPatientID(){
+        return this.patient_id;
+    }
     public String getQRString(){
         return this.qr;
     }

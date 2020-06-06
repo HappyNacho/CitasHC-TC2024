@@ -42,7 +42,7 @@ public class RegistrarProducto extends AppCompatActivity {
         btnAgregar = (Button) findViewById(R.id.btnAgregar);
         btnBuscar = (Button) findViewById(R.id.btnBuscar);
         btnEditar = (Button) findViewById(R.id.btnEditar);
-        btnEliminar = (Button) findViewById(R.id.btnEliminar);
+        btnEliminar = (Button) findViewById(R.id.btnAgendar);
 
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
